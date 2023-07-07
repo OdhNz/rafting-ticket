@@ -7,10 +7,9 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  email: {
+  role_id: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
@@ -38,10 +37,10 @@ UserSchema.set("toJSON", {
 });
 
 /**
- * 1. The userSchema.plugin(uniqueValidator) method won’t let duplicate email id to be stored in the database.
+ * 1. The userSchema.plugin(uniqueValidator) method won’t let duplicate Username id to be stored in the database.
  * 2. The unique: true property in email schema does the internal optimization to enhance the performance.
  */
-UserSchema.plugin(uniqueValidator, { message: "Email already in use." });
+// UserSchema.plugin(uniqueValidator, { message: "Username already in use." });
 
 const User = mongoose.model("user", UserSchema);
 module.exports = User;
